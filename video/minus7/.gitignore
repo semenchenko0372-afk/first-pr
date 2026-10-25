@@ -4,3 +4,4 @@ node_modules/
 assets/voice/*.wav
 renders/work-*/
 renders/.*/
+renders/minus7-master.mp4
