@@ -10,7 +10,7 @@
 |---|-------|----------|----------|
 | 1 | HyperFrames (HeyGen) | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) | видео из HTML/CSS/JS: `hyperframes`, `hyperframes-cli`, `media-use`, `slideshow`, `figma`… |
 | 2 | Remotion | [remotion-dev/skills](https://github.com/remotion-dev/skills) | видео на React: `remotion-best-practices`, `remotion-captions`, `remotion-render`… |
-| 3 | Эмиль Ковальски | [emilkowalski/skills](https://github.com/emilkowalski/skills) | анимации и полировка UI: `emil-design-eng`, `animate`, `review-animations`… |
+| 3 | Эмиль Ковальски | [emilkowalski/skills](https://github.com/emilkowalski/skills) | анимации и полировка UI: `emil-design-eng`, `animate`, `review-animations`… (без мобильных: `write-swift`, `mobile-native`, `animate-expo`) |
 | 4 | taste-skill | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | «вкус» во фронтенде, без шаблонного AI-дизайна |
 | 5 | impeccable | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | аудит и доводка дизайна (типографика, отступы, шрифты) |
 | 6 | frontend-design (Anthropic) | [anthropics/skills](https://github.com/anthropics/skills) | официальный скилл для фронтенд-дизайна |
