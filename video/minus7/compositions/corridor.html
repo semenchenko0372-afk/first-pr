@@ -1,0 +1,199 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; }
+    .co-shot { position: absolute; inset: 0; }
+    .co-svg { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="corridor" data-width="1080" data-height="1920">
+    <!-- Shot B: the corridor in torchlight -->
+    <div id="co-hall" class="co-shot" data-layout-allow-overflow>
+      <svg class="co-svg" id="co-hallsvg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="co-ceil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#555b63" /><stop offset="1" stop-color="#1d2024" /></linearGradient>
+          <linearGradient id="co-floor" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#6c6e72" /><stop offset="1" stop-color="#24262a" /></linearGradient>
+          <linearGradient id="co-wl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#848a92" /><stop offset="1" stop-color="#2a2e33" /></linearGradient>
+          <linearGradient id="co-wr" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#7a8087" /><stop offset="1" stop-color="#272b30" /></linearGradient>
+          <radialGradient id="co-hole" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#000" />
+            <stop offset="0.55" stop-color="#000" stop-opacity="0.75" />
+            <stop offset="1" stop-color="#fff" />
+          </radialGradient>
+          <radialGradient id="co-warm" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#fff3d6" stop-opacity="0.38" />
+            <stop offset="1" stop-color="#fff3d6" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="co-mglow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#bff3ff" stop-opacity="0.75" />
+            <stop offset="1" stop-color="#bff3ff" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="co-cone" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#fff6e0" stop-opacity="0.16" />
+            <stop offset="1" stop-color="#fff6e0" stop-opacity="0" />
+          </linearGradient>
+          <mask id="co-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
+            <rect width="1080" height="1920" fill="#fff" />
+            <circle id="co-beam" cx="540" cy="900" r="0" fill="url(#co-hole)" />
+          </mask>
+          <filter id="co-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" /></filter>
+        </defs>
+        <g id="co-world">
+          <!-- one-point perspective box, vanishing toward (540, 820) -->
+          <polygon points="0,0 1080,0 690,700 390,700" fill="url(#co-ceil)" />
+          <polygon points="0,1920 1080,1920 690,950 390,950" fill="url(#co-floor)" />
+          <polygon points="0,0 390,700 390,950 0,1920" fill="url(#co-wl)" />
+          <polygon points="1080,0 690,700 690,950 1080,1920" fill="url(#co-wr)" />
+          <rect x="390" y="700" width="300" height="250" fill="#101215" />
+          <!-- wall seams -->
+          <g stroke="#0e1013" stroke-width="4" opacity="0.7">
+            <line x1="0" y1="560" x2="390" y2="810" /><line x1="1080" y1="560" x2="690" y2="810" />
+            <line x1="180" y1="320" x2="180" y2="1480" /><line x1="300" y1="535" x2="300" y2="1170" />
+            <line x1="900" y1="320" x2="900" y2="1480" /><line x1="780" y1="535" x2="780" y2="1170" />
+            <line x1="0" y1="1920" x2="540" y2="950" stroke-width="2" opacity="0.4" />
+          </g>
+          <!-- ceiling pipes -->
+          <path d="M120 0 L455 700" stroke="#2b2f34" stroke-width="34" />
+          <path d="M120 0 L455 700" stroke="#6c737b" stroke-width="6" opacity="0.5" />
+          <path d="M230 0 L475 700" stroke="#24282c" stroke-width="20" />
+          <!-- dead ceiling lamp cages -->
+          <g fill="none" stroke="#2a2e33" stroke-width="6">
+            <rect x="460" y="300" width="160" height="40" /><rect x="500" y="520" width="80" height="20" />
+          </g>
+          <!-- a door on the right wall -->
+          <polygon points="840,560 960,430 960,1580 840,1260" fill="#24282d" />
+          <polygon points="850,580 950,470 950,1540 850,1240" fill="none" stroke="#0d0f12" stroke-width="5" />
+          <circle cx="868" cy="930" r="8" fill="#6a6f75" />
+          <!-- scratched tallies and the time, over and over, on the left wall -->
+          <g id="co-scratch" stroke="#c9ccd0" stroke-width="3" opacity="0.55" fill="none"></g>
+          <g transform="matrix(0.62 0.42 0 1 60 900)" font-family="Space Mono, monospace" font-size="38" fill="#d6d9dc" opacity="0.6">
+            <text x="0" y="0">23:47</text><text x="0" y="60">23:47</text><text x="120" y="20">23:47</text>
+            <text x="20" y="130">23:47</text><text x="140" y="100">23:47</text><text x="60" y="200">23:47</text>
+          </g>
+          <!-- puddles -->
+          <ellipse cx="380" cy="1500" rx="170" ry="34" fill="#7d8792" opacity="0.18" />
+          <ellipse cx="700" cy="1250" rx="110" ry="18" fill="#7d8792" opacity="0.14" />
+          <!-- cable on the floor -->
+          <path d="M1080 1700 C900 1650 760 1500 640 1300 C600 1220 600 1100 560 950" stroke="#0b0c0e" stroke-width="12" fill="none" />
+          <!-- the far desk and monitor -->
+          <rect x="470" y="880" width="140" height="70" fill="#1a1c20" />
+          <g id="co-dust"></g>
+        </g>
+        <!-- darkness with a torch-shaped hole -->
+        <rect width="1080" height="1920" fill="#000" mask="url(#co-mask)" opacity="0.93" />
+        <circle id="co-warmc" cx="540" cy="900" r="0" fill="url(#co-warm)" />
+        <polygon id="co-conepoly" points="430,1920 650,1920 540,900" fill="url(#co-cone)" opacity="0" />
+        <!-- the monitor emits its own light, so it lives above the darkness -->
+        <g id="co-mon">
+          <ellipse cx="540" cy="850" rx="150" ry="110" fill="url(#co-mglow)" />
+          <rect x="497" y="818" width="86" height="64" rx="6" fill="#20252b" />
+          <rect id="co-screen" x="504" y="824" width="72" height="50" fill="#d8f7ff" />
+          <rect x="530" y="882" width="20" height="10" fill="#20252b" />
+          <rect x="390" y="870" width="300" height="80" fill="#cfefff" opacity="0.05" filter="url(#co-blur)" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Shot A: the doors open onto black -->
+    <div id="co-doors" class="co-shot" data-layout-allow-overflow>
+      <svg class="co-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="co-door" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#5a2b28" /><stop offset="0.5" stop-color="#8d4a44" /><stop offset="1" stop-color="#4a2220" />
+          </linearGradient>
+          <radialGradient id="co-fog" cx="0.5" cy="0.6" r="0.5">
+            <stop offset="0" stop-color="#7f93aa" stop-opacity="0.18" /><stop offset="1" stop-color="#7f93aa" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="1080" height="1920" fill="#2a0c0a" />
+        <rect x="150" y="240" width="780" height="1500" fill="#000" />
+        <ellipse cx="540" cy="1100" rx="420" ry="360" fill="url(#co-fog)" />
+        <g id="co-dl"><rect x="150" y="240" width="390" height="1500" fill="url(#co-door)" /><rect x="530" y="240" width="10" height="1500" fill="#1d0807" /></g>
+        <g id="co-dr"><rect x="540" y="240" width="390" height="1500" fill="url(#co-door)" /><rect x="540" y="240" width="10" height="1500" fill="#1d0807" /></g>
+        <rect x="0" y="0" width="150" height="1920" fill="#3d1512" />
+        <rect x="930" y="0" width="150" height="1920" fill="#3d1512" />
+        <rect x="0" y="0" width="1080" height="240" fill="#4a1a17" />
+        <rect x="0" y="1740" width="1080" height="180" fill="#240908" />
+        <rect x="150" y="1736" width="780" height="8" fill="#9a5a52" opacity="0.5" />
+      </svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const NS = "http://www.w3.org/2000/svg";
+      function rng(seed) {
+        return function () {
+          seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      // Tally scratches on the left wall, skewed into perspective.
+      const r = rng(19);
+      const sc = document.getElementById("co-scratch");
+      for (let k = 0; k < 16; k++) {
+        const x0 = 30 + r() * 280, y0 = 880 + r() * 420;
+        const sy = 0.6 + (x0 / 390) * -0.2;
+        for (let i = 0; i < 5; i++) {
+          const l = document.createElementNS(NS, "line");
+          const x = x0 + i * 10;
+          l.setAttribute("x1", x); l.setAttribute("y1", y0 + x * 0.5 * sy);
+          l.setAttribute("x2", x + 2); l.setAttribute("y2", y0 + 46 + x * 0.5 * sy);
+          if (i === 4) { l.setAttribute("x1", x0 - 6); l.setAttribute("y1", y0 + 10); l.setAttribute("x2", x0 + 44); l.setAttribute("y2", y0 + 34); }
+          sc.appendChild(l);
+        }
+      }
+      // Dust motes, driven by time.
+      const dust = [];
+      const rd = rng(61);
+      const dg = document.getElementById("co-dust");
+      for (let i = 0; i < 70; i++) {
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("r", 1.5 + rd() * 3);
+        c.setAttribute("fill", "#fff4dc");
+        dg.appendChild(c);
+        dust.push({ c, x: 300 + rd() * 480, y: 600 + rd() * 900, vx: (rd() - 0.5) * 18, vy: -6 - rd() * 14, ph: rd() * 6.28, a: 0.25 + rd() * 0.5 });
+      }
+      function drawDust(t) {
+        for (const d of dust) {
+          d.c.setAttribute("cx", d.x + d.vx * t + Math.sin(t * 1.3 + d.ph) * 8);
+          d.c.setAttribute("cy", d.y + d.vy * t);
+          d.c.setAttribute("opacity", d.a * (0.6 + 0.4 * Math.sin(t * 2 + d.ph)));
+        }
+      }
+      const st = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(st, { t: 7.8, duration: 7.8, ease: "none", onUpdate: () => drawDust(st.t) }, 0);
+
+      // Shot A: doors part (0.4 → 2.0), we step toward the dark.
+      tl.fromTo("#co-dl", { x: 0 }, { x: -392, duration: 1.7, ease: "power2.inOut" }, 0.35);
+      tl.fromTo("#co-dr", { x: 0 }, { x: 392, duration: 1.7, ease: "power2.inOut" }, 0.35);
+      tl.fromTo("#co-doors svg", { scale: 1, transformOrigin: "540px 1000px" }, { scale: 1.18, duration: 2.4, ease: "power1.in" }, 0);
+      tl.set("#co-doors", { opacity: 0 }, 2.4);
+
+      // Shot B: click, the torch stutters on, then sweeps and settles on the monitor.
+      tl.set("#co-beam", { attr: { r: 0 } }, 0);
+      tl.set("#co-beam", { attr: { r: 500, cx: 440, cy: 1150 } }, 2.62);
+      tl.set("#co-beam", { attr: { r: 0 } }, 2.7);
+      tl.set("#co-beam", { attr: { r: 540 } }, 2.78);
+      tl.set("#co-conepoly", { opacity: 1 }, 2.78);
+      tl.to("#co-beam", { attr: { cx: 300, cy: 1000 }, duration: 1.2, ease: "sine.inOut" }, 2.9);
+      tl.to("#co-beam", { attr: { cx: 760, cy: 980 }, duration: 1.4, ease: "sine.inOut" }, 4.1);
+      tl.to("#co-beam", { attr: { cx: 540, cy: 880, r: 470 }, duration: 1.3, ease: "power2.inOut" }, 5.5);
+      // the warm core and cone follow the beam
+      tl.set("#co-warmc", { attr: { r: 300, cx: 440, cy: 1150 } }, 2.78);
+      tl.to("#co-warmc", { attr: { cx: 300, cy: 1000 }, duration: 1.2, ease: "sine.inOut" }, 2.9);
+      tl.to("#co-warmc", { attr: { cx: 760, cy: 980 }, duration: 1.4, ease: "sine.inOut" }, 4.1);
+      tl.to("#co-warmc", { attr: { cx: 540, cy: 860 }, duration: 1.3, ease: "power2.inOut" }, 5.5);
+      tl.to("#co-conepoly", { attr: { points: "430,1920 650,1920 300,1000" }, duration: 1.2, ease: "sine.inOut" }, 2.9);
+      tl.to("#co-conepoly", { attr: { points: "430,1920 650,1920 760,980" }, duration: 1.4, ease: "sine.inOut" }, 4.1);
+      tl.to("#co-conepoly", { attr: { points: "430,1920 650,1920 540,860" }, duration: 1.3, ease: "power2.inOut" }, 5.5);
+      tl.fromTo("#co-hallsvg", { scale: 1.0, transformOrigin: "540px 840px" }, { scale: 1.3, duration: 5.4, ease: "power1.in" }, 2.4);
+      // The monitor: faint at first, then it flickers awake.
+      tl.set("#co-mon", { opacity: 0.35 }, 0);
+      const fl = [[5.0, 1], [5.08, 0.3], [5.2, 1], [5.5, 0.5], [5.56, 1], [6.3, 0.6], [6.36, 1], [7.0, 0.45], [7.05, 1]];
+      fl.forEach(([t, o]) => tl.set("#co-mon", { opacity: o }, t));
+      drawDust(0);
+      window.__timelines["corridor"] = tl;
+    })();
+  </script>
+</template>

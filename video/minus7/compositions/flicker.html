@@ -1,0 +1,184 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0d10; }
+    .fl-shot { position: absolute; inset: 0; }
+    .fl-svg { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="flicker" data-width="1080" data-height="1920">
+    <!-- Shot A + C: the face, first in cold light, then in red -->
+    <div id="fl-face" class="fl-shot" data-layout-allow-overflow>
+      <svg class="fl-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="fl-wall" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#4c555f" />
+            <stop offset="0.5" stop-color="#77818c" />
+            <stop offset="1" stop-color="#3c434c" />
+          </linearGradient>
+          <radialGradient id="fl-top" cx="0.5" cy="0" r="0.9">
+            <stop offset="0" stop-color="#eef6ff" stop-opacity="0.55" />
+            <stop offset="1" stop-color="#eef6ff" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="fl-under" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#000" stop-opacity="0" />
+            <stop offset="1" stop-color="#000" stop-opacity="0.7" />
+          </linearGradient>
+          <radialGradient id="fl-redwash" cx="0.5" cy="0.05" r="1">
+            <stop offset="0" stop-color="#ff3a2a" />
+            <stop offset="0.6" stop-color="#7a0e0a" />
+            <stop offset="1" stop-color="#1a0202" />
+          </radialGradient>
+        </defs>
+        <rect width="1080" height="1920" fill="url(#fl-wall)" />
+        <rect x="0" y="0" width="1080" height="1920" fill="url(#fl-top)" />
+        <rect x="520" y="0" width="5" height="1920" fill="#2c3238" opacity="0.6" />
+        <rect x="0" y="1180" width="1080" height="26" fill="#9aa4ae" opacity="0.6" />
+        <rect x="0" y="1206" width="1080" height="10" fill="#2a3036" opacity="0.6" />
+        <g id="fl-rig" transform="translate(540 900) scale(1.72)">
+          
+<g id="fl-char">
+  <!-- hoodie and shoulders -->
+  <path d="M-360 760 L-350 420 C-340 270 -220 205 -120 190 L120 190 C220 205 340 270 350 420 L360 760 Z" fill="#4f6b47" />
+  <path d="M-120 190 C-150 250 -140 320 -90 350 L0 300 L90 350 C140 320 150 250 120 190 Z" fill="#3c5436" />
+  <path d="M-350 420 C-330 330 -260 270 -190 250 C-230 320 -250 420 -250 760 L-360 760 Z" fill="#3c5436" opacity="0.7" />
+  <path d="M-38 300 L-46 470" stroke="#d9d3c2" stroke-width="9" stroke-linecap="round" />
+  <path d="M38 300 L46 470" stroke="#d9d3c2" stroke-width="9" stroke-linecap="round" />
+  <circle cx="-46" cy="476" r="9" fill="#b9b3a2" /><circle cx="46" cy="476" r="9" fill="#b9b3a2" />
+  <!-- lanyard and office badge -->
+  <path d="M-70 205 L-10 420 M70 205 L10 420" stroke="#b8322b" stroke-width="12" fill="none" />
+  <rect x="-48" y="418" width="96" height="128" rx="10" fill="#f2f2ee" stroke="#9a9a94" stroke-width="3" />
+  <rect x="-34" y="436" width="34" height="42" rx="4" fill="#8aa0b8" />
+  <rect x="6" y="440" width="30" height="7" rx="3" fill="#7d7d78" />
+  <rect x="6" y="456" width="22" height="7" rx="3" fill="#a5a59f" />
+  <rect x="-34" y="494" width="70" height="8" rx="4" fill="#b8322b" />
+  <!-- neck -->
+  <path d="M-62 110 L-62 215 C-30 240 30 240 62 215 L62 110 Z" fill="#c48a63" />
+  <g id="fl-head">
+    <ellipse cx="-158" cy="-10" rx="26" ry="40" fill="#e3ae86" />
+    <ellipse cx="158" cy="-10" rx="26" ry="40" fill="#c48a63" />
+    <path d="M-160 -10 q8 -16 6 10" stroke="#c48a63" stroke-width="5" fill="none" />
+    <path d="M0 -220 C110 -220 162 -140 162 -40 C162 70 92 152 0 152 C-92 152 -162 70 -162 -40 C-162 -140 -110 -220 0 -220 Z" fill="#e3ae86" />
+    <path d="M44 -214 C132 -188 166 -112 162 -30 C156 70 92 150 0 152 C74 120 116 40 102 -60 C92 -140 66 -190 44 -214 Z" fill="#c48a63" opacity="0.6" />
+    <ellipse cx="-92" cy="52" rx="30" ry="16" fill="#e98c78" opacity="0.25" />
+    <ellipse cx="92" cy="52" rx="30" ry="16" fill="#e98c78" opacity="0.2" />
+    <!-- jaw shadow -->
+    <path d="M-90 120 C-40 156 40 156 90 120" stroke="#c48a63" stroke-width="10" fill="none" opacity="0.5" />
+    <!-- eyes -->
+    <g id="fl-eyeL" transform="translate(-62 -14)">
+      <ellipse rx="34" ry="27" fill="#f6f1ea" />
+      <g id="fl-irisL"><circle r="17" fill="#5a3826" /><circle r="8" fill="#140c08" /><circle cx="6" cy="-7" r="5" fill="#ffffff" /></g>
+      <path d="M-36 -4 C-26 -30 26 -30 36 -6" stroke="#20160f" stroke-width="7" fill="none" stroke-linecap="round" />
+      <ellipse id="fl-lidL" cx="0" cy="0" rx="37" ry="30" fill="#e3ae86" />
+      <path d="M-26 34 C-10 40 10 40 26 33" stroke="#c48a63" stroke-width="5" fill="none" opacity="0.7" />
+    </g>
+    <g id="fl-eyeR" transform="translate(62 -14)">
+      <ellipse rx="34" ry="27" fill="#f3ece4" />
+      <g id="fl-irisR"><circle r="17" fill="#5a3826" /><circle r="8" fill="#140c08" /><circle cx="6" cy="-7" r="5" fill="#ffffff" /></g>
+      <path d="M-36 -6 C-26 -30 26 -30 36 -4" stroke="#20160f" stroke-width="7" fill="none" stroke-linecap="round" />
+      <ellipse id="fl-lidR" cx="0" cy="0" rx="37" ry="30" fill="#c48a63" />
+      <path d="M-26 33 C-10 40 10 40 26 34" stroke="#c48a63" stroke-width="5" fill="none" opacity="0.7" />
+    </g>
+    <!-- brows -->
+    <path id="fl-browL" d="M-100 -78 C-80 -92 -48 -94 -26 -84" stroke="#1d1512" stroke-width="15" fill="none" stroke-linecap="round" />
+    <path id="fl-browR" d="M26 -84 C48 -94 80 -92 100 -78" stroke="#1d1512" stroke-width="15" fill="none" stroke-linecap="round" />
+    <!-- nose -->
+    <path d="M-4 18 C-8 40 -10 52 4 58 C14 62 24 56 22 50" stroke="#a96e4b" stroke-width="6" fill="none" stroke-linecap="round" />
+    <!-- mouths -->
+    <path id="fl-mN" d="M-32 96 Q0 104 32 94" stroke="#6b3324" stroke-width="7" fill="none" stroke-linecap="round" />
+    <g id="fl-mO" opacity="0"><ellipse cx="0" cy="100" rx="17" ry="21" fill="#3d1512" /><ellipse cx="0" cy="112" rx="10" ry="6" fill="#b8574d" /></g>
+    <path id="fl-mT" d="M-26 98 Q0 88 26 98" stroke="#6b3324" stroke-width="7" fill="none" stroke-linecap="round" opacity="0" />
+    <!-- hair -->
+    <path d="M-172 -30 C-196 -170 -106 -258 8 -252 C126 -250 196 -170 172 -30 C162 -84 144 -116 114 -134 C104 -100 70 -92 40 -112 C22 -86 -24 -88 -46 -116 C-78 -92 -120 -100 -140 -124 C-152 -96 -162 -66 -172 -30 Z" fill="#1d1512" />
+    <path d="M-120 -196 C-80 -228 -10 -236 50 -220" stroke="#3b2c25" stroke-width="10" fill="none" stroke-linecap="round" />
+    <path d="M30 -112 C40 -140 60 -160 84 -168" stroke="#3b2c25" stroke-width="7" fill="none" stroke-linecap="round" />
+    <path id="fl-sweat" d="M118 -96 C112 -80 108 -70 118 -64 C128 -70 124 -80 118 -96 Z" fill="#dff1ff" opacity="0" />
+  </g>
+</g>
+        </g>
+        <rect width="1080" height="1920" fill="url(#fl-under)" />
+        <rect id="fl-red" width="1080" height="1920" fill="url(#fl-redwash)" style="mix-blend-mode: multiply" opacity="0" />
+        <rect id="fl-redrim" width="1080" height="1920" fill="#ff3020" style="mix-blend-mode: screen" opacity="0" />
+      </svg>
+    </div>
+
+    <!-- Shot B: the display reads -7 -->
+    <div id="fl-disp" class="fl-shot" data-layout-allow-overflow>
+      <svg class="fl-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="fl-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18" /></filter>
+          <radialGradient id="fl-spill" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#ff2a1f" stop-opacity="0.5" />
+            <stop offset="1" stop-color="#ff2a1f" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="1080" height="1920" fill="#120505" />
+        <ellipse cx="540" cy="820" rx="700" ry="600" fill="url(#fl-spill)" />
+        <rect x="60" y="460" width="960" height="720" rx="40" fill="#3a3f46" />
+        <rect x="90" y="490" width="900" height="660" rx="24" fill="#0a0202" />
+        <g id="fl-cyan" opacity="0.5" style="mix-blend-mode: screen"></g>
+        <g id="fl-segglow" filter="url(#fl-glow)"></g>
+        <g id="fl-seg"></g>
+        <polygon points="90,490 470,490 300,1150 90,1150" fill="#ffffff" opacity="0.04" />
+      </svg>
+    </div>
+    <div id="fl-black" class="fl-shot" style="background:#000; opacity:0"></div>
+  </div>
+  <script>
+    (function () {
+      const NS = "http://www.w3.org/2000/svg";
+      // -7 in the same seven-segment face as the floor display.
+      function segs(x, y, w, h, t) {
+        const g = 8;
+        const hx = (yy) => [x + t / 2 + g, yy, x + t + g, yy - t / 2, x + w - t - g, yy - t / 2, x + w - t / 2 - g, yy, x + w - t - g, yy + t / 2, x + t + g, yy + t / 2];
+        const vx = (xx, y0, y1) => [xx, y0 + g, xx + t / 2, y0 + t / 2 + g, xx + t / 2, y1 - t / 2 - g, xx, y1 - g, xx - t / 2, y1 - t / 2 - g, xx - t / 2, y0 + t / 2 + g];
+        return { a: hx(y + t / 2), g: hx(y + h / 2), d: hx(y + h - t / 2), f: vx(x + t / 2, y + t / 2, y + h / 2), b: vx(x + w - t / 2, y + t / 2, y + h / 2), e: vx(x + t / 2, y + h / 2, y + h - t / 2), c: vx(x + w - t / 2, y + h / 2, y + h - t / 2) };
+      }
+      const A = segs(170, 540, 300, 560, 46), B = segs(560, 540, 300, 560, 46);
+      function add(gid, pts, fill) { const p = document.createElementNS(NS, "polygon"); p.setAttribute("points", pts.join(",")); p.setAttribute("fill", fill); document.getElementById(gid).appendChild(p); }
+      Object.keys(A).forEach((k) => add("fl-seg", A[k], k === "g" ? "#ff3b30" : "#2a0a08"));
+      Object.keys(B).forEach((k) => add("fl-seg", B[k], "abc".includes(k) ? "#ff3b30" : "#2a0a08"));
+      add("fl-segglow", A.g, "#ff3b30"); ["a", "b", "c"].forEach((k) => add("fl-segglow", B[k], "#ff3b30"));
+      add("fl-cyan", A.g, "#20e0ff"); ["a", "b", "c"].forEach((k) => add("fl-cyan", B[k], "#20e0ff"));
+
+      const tl = gsap.timeline({ paused: true });
+      // Shots: face 0–1.9, display 1.9–4.0, face again 4.0–7.1.
+      tl.set("#fl-disp", { opacity: 0 }, 0);
+      tl.set("#fl-disp", { opacity: 1 }, 1.9);
+      tl.set("#fl-disp", { opacity: 0 }, 4.0);
+
+      // Shot A: lights stutter, the hero looks up.
+      tl.set(["#fl-lidL", "#fl-lidR"], { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+      tl.fromTo("#fl-face .fl-svg", { scale: 1.0, transformOrigin: "540px 820px" }, { scale: 1.08, duration: 1.9, ease: "none" }, 0);
+      [[0.15, 0.06], [0.3, 0.1], [0.46, 0.05], [0.95, 0.14], [1.2, 0.05], [1.55, 0.08]].forEach(([s, d], i) => {
+        tl.set("#fl-black", { opacity: i % 2 ? 0.85 : 0.65 }, s);
+        tl.set("#fl-black", { opacity: 0 }, s + d);
+      });
+      tl.to(["#fl-irisL", "#fl-irisR"], { y: -10, x: 3, duration: 0.35, ease: "power2.out" }, 0.25);
+      tl.to("#fl-head", { rotation: -4, svgOrigin: "0 120", duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.to(["#fl-browL", "#fl-browR"], { y: -10, duration: 0.3, ease: "back.out(2)" }, 0.5);
+
+      // Shot B: hit, chromatic split, settle.
+      tl.fromTo("#fl-disp svg", { scale: 1.18, transformOrigin: "50% 45%" }, { scale: 1.0, duration: 0.5, ease: "power3.out" }, 1.9);
+      tl.fromTo("#fl-cyan", { x: -26, y: 6 }, { x: 0, y: 0, duration: 0.6, ease: "power2.out" }, 1.9);
+      tl.fromTo("#fl-segglow", { opacity: 1 }, { opacity: 0.55, duration: 0.18, yoyo: true, repeat: 7, ease: "steps(1)" }, 2.5);
+
+      // Shot C: red light, wide eyes, the sweat drop.
+      tl.set("#fl-red", { opacity: 0.92 }, 4.0);
+      tl.set("#fl-redrim", { opacity: 0.12 }, 4.0);
+      tl.set("#fl-head", { rotation: 0 }, 4.0);
+      tl.set(["#fl-irisL", "#fl-irisR"], { y: 0, x: 0, scale: 0.78 }, 4.0);
+      tl.set(["#fl-browL"], { y: -14, rotation: 8, transformOrigin: "50% 50%" }, 4.0);
+      tl.set(["#fl-browR"], { y: -14, rotation: -8, transformOrigin: "50% 50%" }, 4.0);
+      tl.set("#fl-mN", { opacity: 0 }, 4.0);
+      tl.set("#fl-mO", { opacity: 1, scale: 0.7, transformOrigin: "50% 50%" }, 4.0);
+      tl.set("#fl-face .fl-svg", { scale: 1.25, transformOrigin: "540px 760px" }, 4.0);
+      tl.to("#fl-face .fl-svg", { scale: 1.42, duration: 3.1, ease: "power1.inOut" }, 4.0);
+      tl.to(["#fl-lidL", "#fl-lidR"], { scaleY: 1, duration: 0.07, ease: "power2.in" }, 5.3);
+      tl.to(["#fl-lidL", "#fl-lidR"], { scaleY: 0, duration: 0.11, ease: "power2.out" }, 5.37);
+      tl.fromTo("#fl-sweat", { opacity: 0, y: 0 }, { opacity: 0.95, duration: 0.3 }, 4.4);
+      tl.to("#fl-sweat", { y: 120, duration: 2.2, ease: "power2.in" }, 4.8);
+      tl.to(["#fl-irisL", "#fl-irisR"], { x: -9, duration: 0.25, ease: "power2.out" }, 6.0);
+      tl.fromTo("#fl-redrim", { opacity: 0.12 }, { opacity: 0.2, duration: 0.5, yoyo: true, repeat: 5, ease: "sine.inOut" }, 4.0);
+      window.__timelines["flicker"] = tl;
+    })();
+  </script>
+</template>

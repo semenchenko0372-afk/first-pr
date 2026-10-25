@@ -1,0 +1,161 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #020305; }
+    #be-cam { position: absolute; inset: 0; }
+    #be-svg { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="behind" data-width="1080" data-height="1920">
+    <div id="be-cam" data-layout-allow-overflow>
+      <svg id="be-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="be-bg" cx="0.6" cy="0.45" r="0.8">
+            <stop offset="0" stop-color="#16202a" /><stop offset="1" stop-color="#020305" />
+          </radialGradient>
+          <linearGradient id="be-shadow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#000" stop-opacity="0.55" />
+            <stop offset="0.5" stop-color="#000" stop-opacity="0.4" />
+            <stop offset="1" stop-color="#000" stop-opacity="0.1" />
+          </linearGradient>
+          <linearGradient id="be-cyan" x1="1" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#58d6ff" stop-opacity="0.5" />
+            <stop offset="0.6" stop-color="#58d6ff" stop-opacity="0" />
+          </linearGradient>
+          <radialGradient id="be-pale" cx="0.5" cy="0.45" r="0.6">
+            <stop offset="0" stop-color="#d9dfe2" /><stop offset="0.7" stop-color="#9ea7ad" /><stop offset="1" stop-color="#4b5258" />
+          </radialGradient>
+          <radialGradient id="be-mist" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#dff4ff" stop-opacity="0.55" /><stop offset="1" stop-color="#dff4ff" stop-opacity="0" />
+          </radialGradient>
+          <filter id="be-dof" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7" /></filter>
+          <filter id="be-mistblur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+        </defs>
+        <rect width="1080" height="1920" fill="url(#be-bg)" />
+
+        <!-- the thing behind you, out of focus, coming closer -->
+        <g id="be-ghost" opacity="0" filter="url(#be-dof)">
+          <g id="be-ghostface">
+            <path d="M230 360 C120 360 70 520 80 700 C90 900 170 1060 250 1060 C330 1060 400 900 405 700 C410 520 340 360 230 360 Z" fill="url(#be-pale)" />
+            <ellipse cx="180" cy="640" rx="44" ry="62" fill="#050607" />
+            <ellipse cx="300" cy="630" rx="44" ry="62" fill="#050607" />
+            <ellipse id="be-gl1" cx="186" cy="650" rx="7" ry="5" fill="#f0fbff" opacity="0" />
+            <ellipse id="be-gl2" cx="306" cy="640" rx="7" ry="5" fill="#f0fbff" opacity="0" />
+            <path d="M190 880 C220 900 270 900 300 878" stroke="#2a2f33" stroke-width="10" fill="none" stroke-linecap="round" />
+            <path d="M80 640 C40 760 50 1000 140 1180 L60 1300 Z" fill="#050607" opacity="0.8" />
+          </g>
+        </g>
+
+        <!-- breath -->
+        <g id="be-mist1" opacity="0" filter="url(#be-mistblur)"><ellipse cx="380" cy="1180" rx="120" ry="60" fill="url(#be-mist)" /><ellipse cx="460" cy="1210" rx="90" ry="40" fill="url(#be-mist)" /></g>
+        <g id="be-mist2" opacity="0" filter="url(#be-mistblur)"><ellipse cx="390" cy="1160" rx="130" ry="64" fill="url(#be-mist)" /><ellipse cx="470" cy="1200" rx="100" ry="44" fill="url(#be-mist)" /></g>
+
+        <g id="be-shake">
+          <g id="be-rig" transform="translate(720 880) scale(2.2)">
+            
+<g id="be-char">
+  <!-- hoodie and shoulders -->
+  <path d="M-360 760 L-350 420 C-340 270 -220 205 -120 190 L120 190 C220 205 340 270 350 420 L360 760 Z" fill="#4f6b47" />
+  <path d="M-120 190 C-150 250 -140 320 -90 350 L0 300 L90 350 C140 320 150 250 120 190 Z" fill="#3c5436" />
+  <path d="M-350 420 C-330 330 -260 270 -190 250 C-230 320 -250 420 -250 760 L-360 760 Z" fill="#3c5436" opacity="0.7" />
+  <path d="M-38 300 L-46 470" stroke="#d9d3c2" stroke-width="9" stroke-linecap="round" />
+  <path d="M38 300 L46 470" stroke="#d9d3c2" stroke-width="9" stroke-linecap="round" />
+  <circle cx="-46" cy="476" r="9" fill="#b9b3a2" /><circle cx="46" cy="476" r="9" fill="#b9b3a2" />
+  <!-- lanyard and office badge -->
+  <path d="M-70 205 L-10 420 M70 205 L10 420" stroke="#b8322b" stroke-width="12" fill="none" />
+  <rect x="-48" y="418" width="96" height="128" rx="10" fill="#f2f2ee" stroke="#9a9a94" stroke-width="3" />
+  <rect x="-34" y="436" width="34" height="42" rx="4" fill="#8aa0b8" />
+  <rect x="6" y="440" width="30" height="7" rx="3" fill="#7d7d78" />
+  <rect x="6" y="456" width="22" height="7" rx="3" fill="#a5a59f" />
+  <rect x="-34" y="494" width="70" height="8" rx="4" fill="#b8322b" />
+  <!-- neck -->
+  <path d="M-62 110 L-62 215 C-30 240 30 240 62 215 L62 110 Z" fill="#c48a63" />
+  <g id="be-head">
+    <ellipse cx="-158" cy="-10" rx="26" ry="40" fill="#e3ae86" />
+    <ellipse cx="158" cy="-10" rx="26" ry="40" fill="#c48a63" />
+    <path d="M-160 -10 q8 -16 6 10" stroke="#c48a63" stroke-width="5" fill="none" />
+    <path d="M0 -220 C110 -220 162 -140 162 -40 C162 70 92 152 0 152 C-92 152 -162 70 -162 -40 C-162 -140 -110 -220 0 -220 Z" fill="#e3ae86" />
+    <path d="M44 -214 C132 -188 166 -112 162 -30 C156 70 92 150 0 152 C74 120 116 40 102 -60 C92 -140 66 -190 44 -214 Z" fill="#c48a63" opacity="0.6" />
+    <ellipse cx="-92" cy="52" rx="30" ry="16" fill="#e98c78" opacity="0.25" />
+    <ellipse cx="92" cy="52" rx="30" ry="16" fill="#e98c78" opacity="0.2" />
+    <!-- jaw shadow -->
+    <path d="M-90 120 C-40 156 40 156 90 120" stroke="#c48a63" stroke-width="10" fill="none" opacity="0.5" />
+    <!-- eyes -->
+    <g id="be-eyeL" transform="translate(-62 -14)">
+      <ellipse rx="34" ry="27" fill="#f6f1ea" />
+      <g id="be-irisL"><circle r="17" fill="#5a3826" /><circle r="8" fill="#140c08" /><circle cx="6" cy="-7" r="5" fill="#ffffff" /></g>
+      <path d="M-36 -4 C-26 -30 26 -30 36 -6" stroke="#20160f" stroke-width="7" fill="none" stroke-linecap="round" />
+      <ellipse id="be-lidL" cx="0" cy="0" rx="37" ry="30" fill="#e3ae86" />
+      <path d="M-26 34 C-10 40 10 40 26 33" stroke="#c48a63" stroke-width="5" fill="none" opacity="0.7" />
+    </g>
+    <g id="be-eyeR" transform="translate(62 -14)">
+      <ellipse rx="34" ry="27" fill="#f3ece4" />
+      <g id="be-irisR"><circle r="17" fill="#5a3826" /><circle r="8" fill="#140c08" /><circle cx="6" cy="-7" r="5" fill="#ffffff" /></g>
+      <path d="M-36 -6 C-26 -30 26 -30 36 -4" stroke="#20160f" stroke-width="7" fill="none" stroke-linecap="round" />
+      <ellipse id="be-lidR" cx="0" cy="0" rx="37" ry="30" fill="#c48a63" />
+      <path d="M-26 33 C-10 40 10 40 26 34" stroke="#c48a63" stroke-width="5" fill="none" opacity="0.7" />
+    </g>
+    <!-- brows -->
+    <path id="be-browL" d="M-100 -78 C-80 -92 -48 -94 -26 -84" stroke="#1d1512" stroke-width="15" fill="none" stroke-linecap="round" />
+    <path id="be-browR" d="M26 -84 C48 -94 80 -92 100 -78" stroke="#1d1512" stroke-width="15" fill="none" stroke-linecap="round" />
+    <!-- nose -->
+    <path d="M-4 18 C-8 40 -10 52 4 58 C14 62 24 56 22 50" stroke="#a96e4b" stroke-width="6" fill="none" stroke-linecap="round" />
+    <!-- mouths -->
+    <path id="be-mN" d="M-32 96 Q0 104 32 94" stroke="#6b3324" stroke-width="7" fill="none" stroke-linecap="round" />
+    <g id="be-mO" opacity="0"><ellipse cx="0" cy="100" rx="17" ry="21" fill="#3d1512" /><ellipse cx="0" cy="112" rx="10" ry="6" fill="#b8574d" /></g>
+    <path id="be-mT" d="M-26 98 Q0 88 26 98" stroke="#6b3324" stroke-width="7" fill="none" stroke-linecap="round" opacity="0" />
+    <!-- hair -->
+    <path d="M-172 -30 C-196 -170 -106 -258 8 -252 C126 -250 196 -170 172 -30 C162 -84 144 -116 114 -134 C104 -100 70 -92 40 -112 C22 -86 -24 -88 -46 -116 C-78 -92 -120 -100 -140 -124 C-152 -96 -162 -66 -172 -30 Z" fill="#1d1512" />
+    <path d="M-120 -196 C-80 -228 -10 -236 50 -220" stroke="#3b2c25" stroke-width="10" fill="none" stroke-linecap="round" />
+    <path d="M30 -112 C40 -140 60 -160 84 -168" stroke="#3b2c25" stroke-width="7" fill="none" stroke-linecap="round" />
+    <path id="be-sweat" d="M118 -96 C112 -80 108 -70 118 -64 C128 -70 124 -80 118 -96 Z" fill="#dff1ff" opacity="0" />
+  </g>
+</g>
+          </g>
+        </g>
+        <rect width="1080" height="1920" fill="url(#be-shadow)" style="mix-blend-mode: multiply" />
+        <rect width="1080" height="1920" fill="url(#be-cyan)" style="mix-blend-mode: screen" />
+        <rect id="be-red" width="1080" height="1920" fill="#ff1a12" style="mix-blend-mode: screen" opacity="0" />
+      </svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#be-cam", { scale: 1.0, transformOrigin: "560px 820px" }, { scale: 1.12, duration: 8.15, ease: "power1.in" }, 0);
+      // The hero: tight mouth, eyes sliding back toward the shoulder.
+      tl.set("#be-mN", { opacity: 0 }, 0);
+      tl.set("#be-mT", { opacity: 1 }, 0);
+      tl.set(["#be-lidL", "#be-lidR"], { scaleY: 0, transformOrigin: "50% 0%" }, 0);
+      tl.set("#be-browL", { y: -6, rotation: 10, transformOrigin: "50% 50%" }, 0);
+      tl.set("#be-browR", { y: -6, rotation: -10, transformOrigin: "50% 50%" }, 0);
+      tl.set("#be-sweat", { opacity: 0.9 }, 0);
+      tl.fromTo(["#be-irisL", "#be-irisR"], { x: 0 }, { x: -15, duration: 0.5, ease: "power2.inOut" }, 0.6);
+      tl.to("#be-head", { rotation: -5, svgOrigin: "0 120", duration: 1.6, ease: "sine.inOut" }, 1.0);
+      tl.to(["#be-lidL", "#be-lidR"], { scaleY: 1, duration: 0.07 }, 3.1);
+      tl.to(["#be-lidL", "#be-lidR"], { scaleY: 0, duration: 0.12 }, 3.17);
+      tl.to("#be-sweat", { y: 90, duration: 3, ease: "power1.in" }, 2.0);
+      // Trembling, seeded, on twelves.
+      for (let k = 0; k < 96; k++) {
+        const a = Math.sin(k * 78.233) * 43758.5453, b = Math.sin(k * 12.9898) * 24634.6345;
+        const amp = k < 70 ? 2.2 : 5;
+        tl.set("#be-shake", { x: (a - Math.floor(a) - 0.5) * amp, y: (b - Math.floor(b) - 0.5) * amp }, k / 12);
+      }
+      // Breath on the neck: two exhalations.
+      [[0.7, "#be-mist1"], [2.4, "#be-mist2"], [4.3, "#be-mist1"]].forEach(([t, id]) => {
+        tl.fromTo(id, { opacity: 0, x: -80, y: -30 }, { opacity: 0.9, x: 40, y: 20, duration: 0.9, ease: "power2.out" }, t);
+        tl.to(id, { opacity: 0, x: 90, duration: 0.8, ease: "power1.in" }, t + 0.9);
+      });
+      // The face behind comes out of the dark.
+      tl.fromTo("#be-ghost", { opacity: 0 }, { opacity: 0.35, duration: 3, ease: "power1.in" }, 0.2);
+      tl.to("#be-ghost", { opacity: 0.8, duration: 2.6, ease: "power1.in" }, 3.4);
+      tl.fromTo("#be-ghostface", { x: -90, y: 30, scale: 0.92, transformOrigin: "240px 700px" }, { x: -10, y: -20, scale: 1.1, duration: 7.6, ease: "power1.in" }, 0.2);
+      tl.to(["#be-gl1", "#be-gl2"], { opacity: 1, duration: 0.2 }, 6.1);
+      // The whisper: eyes snap wide, red bleeds in, then a hard cut.
+      tl.set(["#be-irisL", "#be-irisR"], { scale: 0.7, x: -20 }, 6.2);
+      tl.set("#be-ghost", { opacity: 1 }, 6.2);
+      tl.fromTo("#be-red", { opacity: 0 }, { opacity: 0.22, duration: 1.4, ease: "power2.in" }, 6.3);
+      tl.set("#be-mT", { opacity: 0 }, 6.2);
+      tl.set("#be-mO", { opacity: 1, scale: 0.55, transformOrigin: "50% 50%" }, 6.2);
+      window.__timelines["behind"] = tl;
+    })();
+  </script>
+</template>
