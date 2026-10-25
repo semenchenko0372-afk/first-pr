@@ -2,3 +2,5 @@
 node_modules/
 .debug/
 assets/voice/*.wav
+renders/work-*/
+renders/.*/
