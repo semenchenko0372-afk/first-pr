@@ -63,7 +63,18 @@ def main() -> None:
     acc = RUAccent()
     acc.load(omograph_model_size="turbo3.1", use_dictionary=True, tiny_mode=False)
 
-    ref_audio, ref_text_p = preprocess_ref_audio_text(a.ref, acc.process_all(ref_text))
+    def stress(text: str) -> str:
+        # RUAccent marks stress with "+"; its homograph model sometimes throws, so fall back to plain text.
+        if "+" in text:
+            return text
+        try:
+            return acc.process_all(text)
+        except Exception as e:  # noqa: BLE001
+            print("ruaccent failed, using plain text:", e)
+            return text
+
+    # The reference transcript needs no stress marks.
+    ref_audio, ref_text_p = preprocess_ref_audio_text(a.ref, ref_text)
     out = pathlib.Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     only = set(a.only.split(",")) if a.only else None
@@ -74,7 +85,7 @@ def main() -> None:
         if only and lid not in only:
             continue
         torch.manual_seed(a.seed)
-        gen = text if "+" in text else acc.process_all(text)
+        gen = stress(text)
         wav, sr, _ = infer_process(ref_audio, ref_text_p, gen, model, vocoder,
                                    nfe_step=a.nfe, speed=a.speed, cross_fade_duration=0.15, device="cpu")
         sf.write(out / f"{lid}.wav", wav, sr)
