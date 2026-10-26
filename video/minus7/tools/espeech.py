@@ -11,6 +11,7 @@ import pathlib
 
 import soundfile as sf
 import torch
+import torchaudio
 from huggingface_hub import hf_hub_download
 from f5_tts.infer.utils_infer import infer_process, load_model, load_vocoder, preprocess_ref_audio_text
 from f5_tts.model import DiT
@@ -19,11 +20,24 @@ from ruaccent import RUAccent
 MODEL_CFG = dict(dim=1024, depth=22, heads=16, ff_mult=2, text_dim=512, conv_layers=4)
 
 
+def _sf_load(path, *args, **kwargs):
+    # torchaudio.load now needs torchcodec's native libs; soundfile reads WAV fine.
+    wav, sr = sf.read(path, dtype="float32", always_2d=True)
+    return torch.from_numpy(wav.T.copy()), sr
+
+
+torchaudio.load = _sf_load
+
+
 def transcribe(path: str) -> str:
     from faster_whisper import WhisperModel
 
+    import torchaudio.functional as AF
+
+    wav, sr = sf.read(path, dtype="float32", always_2d=True)
+    audio = AF.resample(torch.from_numpy(wav.mean(axis=1)), sr, 16000).numpy()
     model = WhisperModel("small", device="cpu", compute_type="int8")
-    segments, _ = model.transcribe(path, language="ru", beam_size=5)
+    segments, _ = model.transcribe(audio, language="ru", beam_size=5)
     return " ".join(s.text.strip() for s in segments).strip()
 
 
