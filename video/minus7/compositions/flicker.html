@@ -143,7 +143,7 @@
       // Shots: face 0–1.9, display 1.9–4.0, face again 4.0–7.1.
       tl.set("#fl-disp", { opacity: 0 }, 0);
       tl.set("#fl-disp", { opacity: 1 }, 1.9);
-      tl.set("#fl-disp", { opacity: 0 }, 4.0);
+      tl.set("#fl-disp", { opacity: 0 }, 4.6);
 
       // Shot A: lights stutter, the hero looks up.
       tl.set(["#fl-lidL", "#fl-lidR"], { scaleY: 0, transformOrigin: "50% 0%" }, 0);
@@ -162,22 +162,22 @@
       tl.fromTo("#fl-segglow", { opacity: 1 }, { opacity: 0.55, duration: 0.18, yoyo: true, repeat: 7, ease: "steps(1)" }, 2.5);
 
       // Shot C: red light, wide eyes, the sweat drop.
-      tl.set("#fl-red", { opacity: 0.92 }, 4.0);
-      tl.set("#fl-redrim", { opacity: 0.12 }, 4.0);
-      tl.set("#fl-head", { rotation: 0 }, 4.0);
-      tl.set(["#fl-irisL", "#fl-irisR"], { y: 0, x: 0, scale: 0.78 }, 4.0);
-      tl.set(["#fl-browL"], { y: -14, rotation: 8, transformOrigin: "50% 50%" }, 4.0);
-      tl.set(["#fl-browR"], { y: -14, rotation: -8, transformOrigin: "50% 50%" }, 4.0);
-      tl.set("#fl-mN", { opacity: 0 }, 4.0);
-      tl.set("#fl-mO", { opacity: 1, scale: 0.7, transformOrigin: "50% 50%" }, 4.0);
-      tl.set("#fl-face .fl-svg", { scale: 1.25, transformOrigin: "540px 760px" }, 4.0);
-      tl.to("#fl-face .fl-svg", { scale: 1.42, duration: 3.1, ease: "power1.inOut" }, 4.0);
-      tl.to(["#fl-lidL", "#fl-lidR"], { scaleY: 1, duration: 0.07, ease: "power2.in" }, 5.3);
-      tl.to(["#fl-lidL", "#fl-lidR"], { scaleY: 0, duration: 0.11, ease: "power2.out" }, 5.37);
-      tl.fromTo("#fl-sweat", { opacity: 0, y: 0 }, { opacity: 0.95, duration: 0.3 }, 4.4);
-      tl.to("#fl-sweat", { y: 120, duration: 2.2, ease: "power2.in" }, 4.8);
-      tl.to(["#fl-irisL", "#fl-irisR"], { x: -9, duration: 0.25, ease: "power2.out" }, 6.0);
-      tl.fromTo("#fl-redrim", { opacity: 0.12 }, { opacity: 0.2, duration: 0.5, yoyo: true, repeat: 5, ease: "sine.inOut" }, 4.0);
+      tl.set("#fl-red", { opacity: 0.92 }, 4.6);
+      tl.set("#fl-redrim", { opacity: 0.12 }, 4.6);
+      tl.set("#fl-head", { rotation: 0 }, 4.6);
+      tl.set(["#fl-irisL", "#fl-irisR"], { y: 0, x: 0, scale: 0.78 }, 4.6);
+      tl.set(["#fl-browL"], { y: -14, rotation: 8, transformOrigin: "50% 50%" }, 4.6);
+      tl.set(["#fl-browR"], { y: -14, rotation: -8, transformOrigin: "50% 50%" }, 4.6);
+      tl.set("#fl-mN", { opacity: 0 }, 4.6);
+      tl.set("#fl-mO", { opacity: 1, scale: 0.7, transformOrigin: "50% 50%" }, 4.6);
+      tl.set("#fl-face .fl-svg", { scale: 1.25, transformOrigin: "540px 760px" }, 4.6);
+      tl.to("#fl-face .fl-svg", { scale: 1.42, duration: 2.5, ease: "power1.inOut" }, 4.6);
+      tl.to(["#fl-lidL", "#fl-lidR"], { scaleY: 1, duration: 0.07, ease: "power2.in" }, 5.9);
+      tl.to(["#fl-lidL", "#fl-lidR"], { scaleY: 0, duration: 0.11, ease: "power2.out" }, 5.97);
+      tl.fromTo("#fl-sweat", { opacity: 0, y: 0 }, { opacity: 0.95, duration: 0.3 }, 5);
+      tl.to("#fl-sweat", { y: 120, duration: 2.2, ease: "power2.in" }, 5.4);
+      tl.to(["#fl-irisL", "#fl-irisR"], { x: -9, duration: 0.25, ease: "power2.out" }, 6.6);
+      tl.fromTo("#fl-redrim", { opacity: 0.12 }, { opacity: 0.2, duration: 0.5, yoyo: true, repeat: 4, ease: "sine.inOut" }, 4.6);
       window.__timelines["flicker"] = tl;
     })();
   </script>

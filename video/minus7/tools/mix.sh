@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 S=assets/sfx
-DUR=58.5
+DUR=59.7
 
 # name  file                    start(s)  volume  extra filter
 cues=(
@@ -18,21 +18,21 @@ cues=(
   "race       $S/glitch-3.mp3        17.20  0.35"
   "flick1     $S/glitch-1.mp3        19.05  0.40"
   "minus7     $S/impact-bass-1.mp3   20.80  0.75"
-  "flick2     $S/glitch-3.mp3        22.80  0.25"
+  "flick2     $S/glitch-3.mp3        23.40  0.25"
   "doors      $S/whoosh-cinematic.mp3 26.00 0.35"
   "torch      $S/click.mp3           28.55  0.60"
   "cctv       $S/glitch-3.mp3        33.75  0.35"
-  "figure     $S/impact-bass-2.mp3   40.90  0.70"
-  "glitchfig  $S/glitch-1.mp3        41.15  0.40"
-  "riser      $S/riser.mp3           43.80  0.30"
-  "heart      $S/heartbeat.wav       45.60  0.80"
-  "black      $S/impact-bass-1.mp3   53.75  0.85"
+  "figure     $S/impact-bass-2.mp3   41.90  0.70"
+  "glitchfig  $S/glitch-1.mp3        42.15  0.40"
+  "riser      $S/riser.mp3           45.00  0.30"
+  "heart      $S/heartbeat.wav       46.80  0.80"
+  "black      $S/impact-bass-1.mp3   54.95  0.85"
 )
 
 inputs=(-i assets/voice.wav -ss 0 -t $DUR -i "$S/Ossuary_6_-_Air.mp3")
 filters="[0:a]aresample=48000,volume=1.0[voice];"
 # Music bed: rises with the track, drops away under the whisper, gone on the black card.
-filters+="[1:a]aresample=48000,volume=0.55,afade=t=in:d=1.5,volume='if(between(t,50.9,53.75),0.35,if(gt(t,53.75),0,1))':eval=frame[bed];"
+filters+="[1:a]aresample=48000,volume=0.55,afade=t=in:d=1.5,volume='if(between(t,52.1,54.95),0.35,if(gt(t,54.95),0,1))':eval=frame[bed];"
 mixes="[voice][bed]"
 n=2
 for c in "${cues[@]}"; do

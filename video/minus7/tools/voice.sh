@@ -19,5 +19,5 @@ while read -r id t; do
   ms=$(python3 -c "print(int($t*1000))")
   filt+="[$i:a]adelay=$ms|$ms[a$i];"; mix+="[a$i]"; i=$((i+1))
 done < voice-timing.txt
-ffmpeg -loglevel error -y "${inputs[@]}" -filter_complex "${filt}${mix}amix=inputs=$i:normalize=0,apad=whole_dur=58.5[o]" -map "[o]" -ar 48000 -ac 1 assets/voice.wav
+ffmpeg -loglevel error -y "${inputs[@]}" -filter_complex "${filt}${mix}amix=inputs=$i:normalize=0,apad=whole_dur=59.7[o]" -map "[o]" -ar 48000 -ac 1 assets/voice.wav
 echo "wrote assets/voice.wav"
