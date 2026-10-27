@@ -1,0 +1,56 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #000; }
+    #end-q {
+      opacity: 0;
+      position: absolute; left: 0; right: 0; top: 700px;
+      text-align: center; color: #f4f6f8;
+      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 96px; line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    #end-q .l { display: block; }
+    #end-red { position: absolute; left: 0; right: 0; top: 700px; text-align: center; color: #ff2a20;
+      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 96px; line-height: 1.05; letter-spacing: -0.01em; opacity: 0; mix-blend-mode: screen; }
+    #end-red .l { display: block; }
+    #end-tally { position: absolute; left: 0; right: 0; top: 1110px; text-align: center; color: #c9ccd0; opacity: 0;
+      font-family: "Space Mono", monospace; font-size: 54px; letter-spacing: 0.04em; }
+    #end-tally span { display: inline-block; margin: 0 14px; text-decoration: line-through; text-decoration-thickness: 4px; }
+    #end-tally span:last-child { text-decoration: none; }
+    #end-sub {
+      opacity: 0;
+      position: absolute; left: 0; right: 0; top: 1230px; text-align: center;
+      color: #8d949b; font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 30px;
+      letter-spacing: 0.32em; text-transform: uppercase;
+    }
+    #end-floor {
+      opacity: 0;
+      position: absolute; left: 0; right: 0; top: 540px; text-align: center;
+      color: #ff3b30; font-family: "Space Mono", monospace; font-weight: 700; font-size: 44px; letter-spacing: 0.2em;
+    }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
+    <div id="end-floor">ЭТАЖ −7 · ЧАСТЬ 2</div>
+    <div id="end-red" data-layout-ignore><span class="l">СКОЛЬКО РАЗ</span><span class="l">ТЫ УЖЕ</span><span class="l">ЗДЕСЬ БЫЛ?</span></div>
+    <div id="end-q" data-layout-allow-overlap><span class="l">СКОЛЬКО РАЗ</span><span class="l">ТЫ УЖЕ</span><span class="l">ЗДЕСЬ БЫЛ?</span></div>
+    <div id="end-tally"><span>||||</span><span>||||</span><span>||||</span><span>||</span></div>
+    <div id="end-sub">часть 3 — скоро</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#end-floor", { opacity: 0 }, { opacity: 0.9, duration: 0.6, ease: "power2.out" }, 0.25);
+      // The question lands with the voice (0.6 s in).
+      tl.fromTo("#end-q", { opacity: 0, scale: 1.12, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0.6);
+      tl.set("#end-red", { opacity: 0.8, x: 10 }, 0.6);
+      tl.set("#end-red", { x: -6 }, 0.7);
+      tl.set("#end-red", { x: 3 }, 0.8);
+      tl.set("#end-red", { opacity: 0, x: 0 }, 0.9);
+      tl.set("#end-red", { opacity: 0.6, x: -8 }, 2.6);
+      tl.set("#end-red", { opacity: 0, x: 0 }, 2.7);
+      tl.fromTo("#end-tally", { opacity: 0 }, { opacity: 0.75, duration: 0.6, ease: "power2.out" }, 1.6);
+      tl.fromTo("#end-sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 2.4);
+      tl.to("#end-q", { scale: 1.04, duration: 3.5, ease: "none" }, 1.05);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>

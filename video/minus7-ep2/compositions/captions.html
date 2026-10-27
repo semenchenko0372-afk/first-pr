@@ -1,0 +1,87 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .cap {
+      position: absolute; left: 0; right: 0; top: 1160px;
+      padding: 0 110px;
+      text-align: center;
+      color: #f4f6f8;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 62px;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      text-shadow: 0 3px 0 rgba(0,0,0,0.55), 0 0 28px rgba(0,0,0,0.85);
+      opacity: 0;
+      overflow: visible;
+    }
+    .cap .w { display: inline-block; white-space: pre; }
+    .cap.whisper {
+      color: #ff4d4d;
+      font-weight: 800;
+      font-size: 84px;
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 22px rgba(255,40,40,0.65), 0 3px 0 rgba(0,0,0,0.7);
+    }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="c01" class="cap clip" data-start="0.3" data-duration="1.9">Ты оборачиваешься.</div>
+    <div id="c02" class="cap clip" data-start="2.45" data-duration="2.75">Никого… Только темнота.</div>
+    <div id="c03" class="cap clip" data-start="5.75" data-duration="1.85">Ты снова смотришь на экран.</div>
+    <div id="c04" class="cap clip" data-start="7.7" data-duration="2.85">Он всё ещё стоит за твоей спиной.</div>
+    <div id="c05" class="cap clip" data-start="10.65" data-duration="3.45">И теперь… он смотрит прямо в камеру.</div>
+    <div id="c06" class="cap clip" data-start="14.25" data-duration="1.6">Экран гаснет.</div>
+    <div id="c07" class="cap clip" data-start="16.05" data-duration="3.25">В чёрном стекле — твоё отражение.</div>
+    <div id="c08" class="cap whisper clip" data-start="19.45" data-duration="1.8">И его.</div>
+    <div id="c09" class="cap clip" data-start="21.55" data-duration="1.6">Ты бежишь к лифту.</div>
+    <div id="c10" class="cap clip" data-start="24.7" data-duration="1.8">Двери закрываются.</div>
+    <div id="c11" class="cap clip" data-start="26.55" data-duration="3.5">Ты жмёшь «1». Снова. И снова.</div>
+    <div id="c12" class="cap clip" data-start="30.35" data-duration="2.15">Лифт едет вверх.</div>
+    <div id="c13a" class="cap clip" data-start="32.65" data-duration="1.25">Минус три.</div>
+    <div id="c13b" class="cap clip" data-start="33.95" data-duration="1.25">Минус два.</div>
+    <div id="c13c" class="cap clip" data-start="35.25" data-duration="1.5">Минус один.</div>
+    <div id="c14" class="cap clip" data-start="37.15" data-duration="1.35">Ноль.</div>
+    <div id="c15" class="cap clip" data-start="38.55" data-duration="2.1">И лифт останавливается.</div>
+    <div id="c16" class="cap clip" data-start="40.95" data-duration="2.3">Двери открываются.</div>
+    <div id="c17" class="cap clip" data-start="43.35" data-duration="1.6">Тот же коридор.</div>
+    <div id="c18" class="cap clip" data-start="45.15" data-duration="3.2">На стене — новая царапина.</div>
+    <div id="c19" class="cap whisper clip" data-start="48.45" data-duration="1.4">Свежая.</div>
+    <div id="c20" class="cap clip" data-start="50.25" data-duration="2.3">Ты смотришь на свои пальцы.</div>
+    <div id="c21" class="cap clip" data-start="52.65" data-duration="3.3">Под ногтями — бетонная пыль.</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const caps = Array.from(document.querySelectorAll("#root .cap"));
+      caps.forEach((el) => {
+        // Split into words so they arrive one after another, softly.
+        const words = el.textContent.trim().split(/\s+/);
+        el.textContent = "";
+        words.forEach((w, i) => {
+          const s = document.createElement("span");
+          s.className = "w";
+          s.textContent = w + (i < words.length - 1 ? " " : "");
+          el.appendChild(s);
+        });
+        const start = parseFloat(el.dataset.start);
+        const end = start + parseFloat(el.dataset.duration);
+        const ws = el.querySelectorAll(".w");
+        const whisper = el.classList.contains("whisper");
+        tl.set(el, { opacity: 1 }, start);
+        tl.fromTo(ws, { opacity: 0, y: 14, filter: "blur(10px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: whisper ? 0.5 : 0.32, ease: "power2.out",
+            stagger: whisper ? 0.22 : Math.min(0.09, 0.6 / ws.length) }, start + 0.02);
+        if (whisper) {
+          // Shiver: small seeded offsets on a fixed 12 fps step.
+          for (let k = 0; k < 20; k++) {
+            const a = Math.sin(k * 12.9898) * 43758.5453;
+            const fx = (a - Math.floor(a) - 0.5) * 7, fy = Math.cos(k * 4.1) * 3;
+            tl.set(ws, { x: fx, rotation: fy * 0.4 }, start + 0.1 + k / 12);
+          }
+        }
+        tl.to(el, { opacity: 0, duration: 0.14, ease: "power2.in" }, end - 0.14);
+      });
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

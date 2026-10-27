@@ -1,0 +1,119 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #030405; }
+    #na-svg { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="nails" data-width="1080" data-height="1920">
+    <svg id="na-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" data-layout-allow-overflow>
+      <defs>
+        <radialGradient id="na-bg" cx="0.5" cy="0.45" r="0.7">
+          <stop offset="0" stop-color="#1b2027" /><stop offset="1" stop-color="#030405" />
+        </radialGradient>
+        <linearGradient id="na-skin" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#e6b08a" /><stop offset="0.65" stop-color="#d79d77" /><stop offset="1" stop-color="#b47a56" />
+        </linearGradient>
+        <linearGradient id="na-sleeve" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#5d7a53" /><stop offset="1" stop-color="#34492f" />
+        </linearGradient>
+        <radialGradient id="na-torch" cx="0.5" cy="0.4" r="0.55">
+          <stop offset="0" stop-color="#fff2d8" stop-opacity="0.35" /><stop offset="1" stop-color="#fff2d8" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="na-vig" cx="0.5" cy="0.42" r="0.65">
+          <stop offset="0.5" stop-color="#000" stop-opacity="0" /><stop offset="1" stop-color="#000" stop-opacity="0.9" />
+        </radialGradient>
+      </defs>
+      <rect width="1080" height="1920" fill="url(#na-bg)" />
+      <g id="na-cam">
+        <g id="na-hand">
+          <!-- sleeve and back of the hand -->
+          <rect x="300" y="1480" width="500" height="600" rx="40" fill="url(#na-sleeve)" />
+          <rect x="290" y="1460" width="520" height="70" rx="28" fill="#4a6542" />
+          <path d="M320 1080 C310 1250 330 1420 360 1490 L740 1490 C770 1420 790 1250 780 1080 Z" fill="url(#na-skin)" />
+          <!-- thumb -->
+          <path d="M330 1250 C260 1200 220 1120 230 1040 C240 990 290 990 305 1040 C320 1100 340 1150 370 1190 Z" fill="#d9a07a" />
+          <rect x="226" y="985" width="58" height="62" rx="24" fill="#ecc4ae" transform="rotate(-14 255 1016)" />
+          <!-- four fingers, nails up -->
+          <g id="na-f1"><rect x="340" y="640" width="96" height="480" rx="46" fill="url(#na-skin)" /></g>
+          <g id="na-f2"><rect x="448" y="560" width="100" height="560" rx="48" fill="url(#na-skin)" /></g>
+          <g id="na-f3"><rect x="560" y="590" width="98" height="530" rx="48" fill="url(#na-skin)" /></g>
+          <g id="na-f4"><rect x="668" y="700" width="88" height="420" rx="42" fill="url(#na-skin)" /></g>
+          <!-- knuckle creases -->
+          <g stroke="#a96f4c" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.7">
+            <path d="M360 880 q28 10 56 0" /><path d="M468 820 q30 10 60 0" /><path d="M578 840 q30 10 60 0" /><path d="M684 930 q26 9 52 0" />
+            <path d="M362 1000 q26 8 52 0" /><path d="M470 960 q28 8 56 0" /><path d="M580 980 q28 8 56 0" /><path d="M686 1040 q24 8 48 0" />
+          </g>
+          <!-- nails: chipped, packed with grey concrete dust -->
+          <g id="na-nails">
+            <rect x="360" y="652" width="56" height="70" rx="20" fill="#efcdbb" />
+            <rect x="470" y="572" width="58" height="74" rx="22" fill="#efcdbb" />
+            <rect x="580" y="602" width="58" height="72" rx="22" fill="#efcdbb" />
+            <rect x="684" y="712" width="52" height="64" rx="20" fill="#efcdbb" />
+            <g fill="#6f7377">
+              <path d="M362 668 C370 650 410 650 414 668 L410 680 C398 676 380 682 366 678 Z" />
+              <path d="M472 588 C480 568 522 568 526 588 L522 602 C508 596 490 604 476 598 Z" />
+              <path d="M582 618 C590 598 630 598 636 618 L632 630 C618 624 600 632 586 626 Z" />
+              <path d="M686 726 C694 708 728 708 734 726 L730 736 C718 732 702 738 690 734 Z" />
+            </g>
+            <g fill="#4d5155" opacity="0.8">
+              <circle cx="380" cy="690" r="4" /><circle cx="398" cy="696" r="3" /><circle cx="495" cy="612" r="4" />
+              <circle cx="512" cy="620" r="3" /><circle cx="600" cy="640" r="4" /><circle cx="702" cy="748" r="3" />
+            </g>
+            <!-- a broken nail edge -->
+            <path d="M470 588 L486 578 L494 592 L506 576 L528 590" stroke="#3d2a22" stroke-width="3" fill="none" />
+            <!-- raw fingertip scrapes -->
+            <g stroke="#a3463a" stroke-width="3" opacity="0.7">
+              <line x1="352" y1="700" x2="360" y2="740" /><line x1="452" y1="600" x2="458" y2="640" /><line x1="654" y1="640" x2="648" y2="680" />
+            </g>
+          </g>
+          <g id="na-dust" fill="#c7cbcf"></g>
+        </g>
+      </g>
+      <rect width="1080" height="1920" fill="url(#na-torch)" style="mix-blend-mode: screen" />
+      <rect width="1080" height="1920" fill="url(#na-vig)" />
+    </svg>
+  </div>
+  <script>
+    (function () {
+      const NS = "http://www.w3.org/2000/svg";
+      let seed = 88;
+      const r = () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+      // Dust sifting off the fingertips, a function of time.
+      const tips = [[388, 690], [499, 612], [609, 640], [710, 748]];
+      const dust = [];
+      const dg = document.getElementById("na-dust");
+      for (let i = 0; i < 40; i++) {
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("r", 1.5 + r() * 2.5);
+        dg.appendChild(c);
+        const tip = tips[i % 4];
+        dust.push({ c, x: tip[0] + (r() - 0.5) * 40, y: tip[1] + 10, period: 1.6 + r() * 1.4, ph: r() * 3 });
+      }
+      function drawDust(t) {
+        for (const d of dust) {
+          const k = ((t + d.ph) % d.period) / d.period;
+          d.c.setAttribute("cx", d.x + Math.sin((t + d.ph) * 2) * 4);
+          d.c.setAttribute("cy", d.y + k * 260);
+          d.c.setAttribute("opacity", 0.7 * (1 - k));
+        }
+      }
+      const st = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(st, { t: 6, duration: 6, ease: "none", onUpdate: () => drawDust(st.t) }, 0);
+      // The hand rises into the torchlight, then we close on the nails.
+      tl.fromTo("#na-hand", { y: 900 }, { y: 0, duration: 1.4, ease: "power3.out" }, 0.1);
+      tl.fromTo("#na-cam", { scale: 1.0, transformOrigin: "540px 800px" }, { scale: 1.08, duration: 2.5, ease: "none" }, 0);
+      tl.to("#na-cam", { scale: 1.75, transformOrigin: "560px 700px", duration: 2.8, ease: "power2.inOut" }, 2.6);
+      // A tremor, out of step finger to finger.
+      for (let k = 0; k < 72; k++) {
+        const t = k / 12;
+        ["#na-f1", "#na-f2", "#na-f3", "#na-f4"].forEach((id, i) => {
+          const a = Math.sin(k * 12.9898 + i * 78.233) * 43758.5453;
+          tl.set(id, { y: (a - Math.floor(a) - 0.5) * 6 }, t);
+        });
+      }
+      drawDust(0);
+      window.__timelines["nails"] = tl;
+    })();
+  </script>
+</template>

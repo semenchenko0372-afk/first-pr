@@ -1,0 +1,136 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0d0f13; }
+    #up-cam { position: absolute; inset: 0; }
+    #up-svg { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="up" data-width="1080" data-height="1920">
+    <div id="up-cam" data-layout-allow-overflow>
+      <svg id="up-svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="up-wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8b95a1" />
+            <stop offset="0.3" stop-color="#5f6874" />
+            <stop offset="1" stop-color="#22272e" />
+          </linearGradient>
+          <linearGradient id="up-frame" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c7cfd7" />
+            <stop offset="0.5" stop-color="#8a939d" />
+            <stop offset="1" stop-color="#4c545d" />
+          </linearGradient>
+          <linearGradient id="up-glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1a0606" />
+            <stop offset="1" stop-color="#070202" />
+          </linearGradient>
+          <linearGradient id="up-door" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#3b434d" />
+            <stop offset="0.5" stop-color="#6f7984" />
+            <stop offset="1" stop-color="#3b434d" />
+          </linearGradient>
+          <radialGradient id="up-redspill" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#ff2a1f" stop-opacity="0.35" />
+            <stop offset="1" stop-color="#ff2a1f" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="up-ceil" cx="0.5" cy="0" r="0.8">
+            <stop offset="0" stop-color="#eaf4ff" stop-opacity="0.5" />
+            <stop offset="1" stop-color="#eaf4ff" stop-opacity="0" />
+          </radialGradient>
+          <filter id="up-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+          <filter id="up-glow2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" /></filter>
+        </defs>
+        <rect width="1080" height="1920" fill="url(#up-wall)" />
+        <rect width="1080" height="700" fill="url(#up-ceil)" />
+        <!-- ceiling light strip -->
+        <rect x="140" y="60" width="800" height="26" rx="13" fill="#f4f9ff" />
+        <rect x="140" y="60" width="800" height="26" rx="13" fill="#f4f9ff" opacity="0.6" filter="url(#up-glow)" />
+
+        <!-- indicator housing -->
+        <ellipse cx="540" cy="700" rx="560" ry="420" fill="url(#up-redspill)" id="up-spill" />
+        <rect x="120" y="440" width="840" height="520" rx="36" fill="url(#up-frame)" />
+        <rect x="150" y="470" width="780" height="460" rx="20" fill="url(#up-glass)" />
+        <rect x="150" y="470" width="780" height="460" rx="20" fill="none" stroke="#000" stroke-opacity="0.6" stroke-width="6" />
+        <!-- arrow -->
+        <g id="up-arrow">
+          <polygon points="215,720 305,720 260,640" fill="#ff3b30" />
+          <polygon points="215,720 305,720 260,640" fill="#ff3b30" filter="url(#up-glow)" opacity="0.8" />
+        </g>
+        <g id="up-digits-glow" filter="url(#up-glow)" opacity="0.9"></g>
+        <g id="up-digits"></g>
+        <!-- glass reflection -->
+        <polygon points="150,470 520,470 340,930 150,930" fill="#ffffff" opacity="0.05" />
+        <rect x="150" y="470" width="780" height="8" fill="#ffffff" opacity="0.08" />
+
+        <!-- tops of the doors below -->
+        <rect x="120" y="1060" width="420" height="900" fill="url(#up-door)" />
+        <rect x="540" y="1060" width="420" height="900" fill="url(#up-door)" />
+        <rect x="536" y="1060" width="8" height="900" fill="#14181d" />
+        <rect x="100" y="1030" width="880" height="30" fill="#2b3139" />
+        <rect x="120" y="1060" width="840" height="900" fill="url(#up-redspill)" opacity="0.5" />
+        <rect id="up-dark" x="0" y="0" width="1080" height="1920" fill="#000" opacity="0" />
+      </svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const NS = "http://www.w3.org/2000/svg";
+      // Seven-segment geometry for a cell at (x, y), 220 wide and 380 tall.
+      function segs(x, y) {
+        const w = 220, h = 380, t = 34, g = 6;
+        const hx = (yy) => [x + t / 2 + g, yy, x + t + g, yy - t / 2, x + w - t - g, yy - t / 2, x + w - t / 2 - g, yy, x + w - t - g, yy + t / 2, x + t + g, yy + t / 2];
+        const vx = (xx, y0, y1) => [xx, y0 + g, xx + t / 2, y0 + t / 2 + g, xx + t / 2, y1 - t / 2 - g, xx, y1 - g, xx - t / 2, y1 - t / 2 - g, xx - t / 2, y0 + t / 2 + g];
+        return {
+          a: hx(y + t / 2), g: hx(y + h / 2), d: hx(y + h - t / 2),
+          f: vx(x + t / 2, y + t / 2, y + h / 2), b: vx(x + w - t / 2, y + t / 2, y + h / 2),
+          e: vx(x + t / 2, y + h / 2, y + h - t / 2), c: vx(x + w - t / 2, y + h / 2, y + h - t / 2),
+        };
+      }
+      const MAP = { 0: "abcdef", 1: "bc", 2: "abdeg", 3: "abcdg", 4: "bcfg", 5: "acdfg", 6: "acdefg", 7: "abc", 8: "abcdefg", 9: "abcdfg" };
+      const cells = [segs(380, 510), segs(650, 510)];
+      const polys = { on: [], glow: [] };
+      const gd = document.getElementById("up-digits"), gg = document.getElementById("up-digits-glow");
+      cells.forEach((cell, ci) => {
+        Object.keys(cell).forEach((k) => {
+          const p = document.createElementNS(NS, "polygon");
+          p.setAttribute("points", cell[k].join(","));
+          p.dataset.cell = ci; p.dataset.seg = k;
+          gd.appendChild(p);
+          const q = p.cloneNode(); gg.appendChild(q);
+          polys.on.push(p); polys.glow.push(q);
+        });
+      });
+      function show(v) {
+        const neg = v < 0, d = Math.abs(v);
+        polys.on.forEach((p, i) => {
+          const ci = +p.dataset.cell, s = p.dataset.seg;
+          const lit = ci === 0 ? neg && s === "g" : MAP[d].includes(s);
+          p.setAttribute("fill", lit ? "#ff3b30" : "#2a0a08");
+          polys.glow[i].setAttribute("fill", lit ? "#ff3b30" : "none");
+        });
+      }
+      // Floor numbers keyed to the narration (local seconds).
+      const steps = [[0, -7], [0.6, -6], [1.1, -5], [1.7, -4], [2.5, -3], [3.8, -2], [5.1, -1], [7.0, 0]];
+      function valueAt(t) { let v = steps[0][1]; for (const s of steps) if (t >= s[0]) v = s[1]; return v; }
+      let last = null;
+      const state = { t: 0 };
+      function upd() { const v = valueAt(state.t); if (v !== last) { show(v); last = v; } }
+
+      const tl = gsap.timeline({ paused: true });
+      tl.to(state, { t: 10.6, duration: 10.6, ease: "none", onUpdate: upd }, 0);
+      tl.fromTo("#up-cam", { scale: 1.05, transformOrigin: "540px 700px" }, { scale: 1.2, duration: 7.8, ease: "power1.inOut" }, 0);
+      steps.forEach((s) => tl.fromTo("#up-arrow", { opacity: 0.35 }, { opacity: 1, duration: 0.06 }, s[0]));
+      // A low tremble while it climbs.
+      for (let k = 0; k < 92; k++) {
+        const a = Math.sin(k * 91.7) * 43758.5453, b = Math.sin(k * 17.3) * 23421.631;
+        tl.set("#up-svg", { x: (a - Math.floor(a) - 0.5) * 3, y: (b - Math.floor(b) - 0.5) * 3 }, k / 12);
+      }
+      // Zero. A jolt, the lights sag, the arrow dies.
+      [[7.8, 26], [7.86, -18], [7.92, 10], [7.98, -5], [8.05, 0]].forEach(([t, y]) => tl.set("#up-svg", { y, x: 0 }, t));
+      tl.set("#up-arrow", { opacity: 0 }, 7.8);
+      tl.to("#up-dark", { opacity: 0.45, duration: 0.15 }, 7.8);
+      tl.to("#up-dark", { opacity: 0.25, duration: 0.6 }, 8.0);
+      tl.to("#up-cam", { scale: 1.32, duration: 2.6, ease: "power1.out" }, 8.0);
+      show(-7); last = -7;
+      window.__timelines["up"] = tl;
+    })();
+  </script>
+</template>

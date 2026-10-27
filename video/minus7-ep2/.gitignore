@@ -1,0 +1,8 @@
+.hyperframes/
+node_modules/
+.debug/
+assets/voice/*.wav
+renders/work-*/
+renders/.*/
+renders/minus7-master.mp4
+renders/minus7-ep2-master.mp4
