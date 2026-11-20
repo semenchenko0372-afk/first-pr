@@ -32,11 +32,16 @@ for ch in channels:
             continue
         if dur < 12:  # too short to be a short
             continue
-        best.append({"id": cid, "channel": ch, "views": views, "duration": dur, "url": url, "title": title})
-        break  # list is sorted by views: first unused clip is this channel's best
+        clip = {"id": cid, "channel": ch, "views": views, "duration": dur, "url": url, "title": title}
+        # listing order is not reliably by views: keep this channel's most-viewed unused clip
+        prev = next((b for b in best if b["channel"] == ch), None)
+        if prev is None:
+            best.append(clip)
+        elif views > prev["views"]:
+            best[best.index(prev)] = clip
 
 best.sort(key=lambda c: c["views"], reverse=True)
-picks = best[:count + 2]  # a couple of spares in case one turns out not to be GTA 6
+picks = best[:count + 4]  # spares: some clips turn out off-topic or not ad-safe
 for c in picks:
     out = work / f"{c['channel']}_{c['id']}.mp4"
     subprocess.run(["yt-dlp", "-q", "-f", "b", "-o", str(out), c["url"]], check=False, timeout=600)
